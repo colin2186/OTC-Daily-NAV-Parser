@@ -115,7 +115,7 @@ def get_index(row):
         return rec_rate  # Rec Rate is a text (e.g., an index like "DKKCIBOR6M")
     # If Rec Rate is numeric, check Pay Rate
     elif not is_numeric_rate(pay_rate):
-        return pay_rate  # Pay Rate is a text (index)
+        return pay_rate  # Pay Rate is- a text (index)
     # If both are numeric, return None
     return None
 
@@ -187,8 +187,8 @@ print(f"Processed data with breaches saved to: {output_file}")
 
 # Step 14: Apply conditional formatting for TRUE/FALSE
 wb = load_workbook(output_file)
-ws = wb["Processed Report"]
 
+ws = wb["Processed Report"]
 # Ensure both columns are in string format for consistent conditional formatting
 df['Sensitivity Breach'] = df['Sensitivity Breach'].astype(str)
 df['Tolerance Breach'] = df['Tolerance Breach'].astype(str)

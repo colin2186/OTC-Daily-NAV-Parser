@@ -81,7 +81,7 @@ selected_columns = ['A', 'B', 'F', 'V','W','X', 'AZ', 'BA', 'BB', 'BC', 'BD', 'B
 df = data[[excel_columns[col] for col in selected_columns]].copy()
 
 # Convert Final Source Load Time to DDMMYYYY format
-df['Final Source Load Time'] = pd.to_datetime(df['Final Source Load Time']).dt.strftime('%d%m%Y')
+df['Final Source Load Time'] = pd.to_datetime(df['Final Source Loa    d Time']).dt.strftime('%d%m%Y')
 
 # Step 6: Add new columns for tolerance checks
 df['NAV Break (BPs)'] = (df[excel_columns['W']] / nav) * 10000
