@@ -6,6 +6,8 @@ from openpyxl import load_workbook
 from openpyxl.styles import PatternFill
 import numpy as np
 import streamlit as st
+import re
+from openpyxl.styles import Font
 
 # Streamlit app title
 st.title("IRS Report Processor + Tolerance Break Trend Analytics")
@@ -23,13 +25,57 @@ if not uploaded_files:
 
 st.write(f"Uploaded {len(uploaded_files)} files for processing.")
 
+# Function to extract valuation date from row 11 of 'IRS' sheet
+def extract_valuation_date(file_path):
+    """
+    Extracts the Valuation Date from row 11 of the 'IRS' sheet in the Excel file.
+    Converts the extracted date to DDMMYYYY format.
+    """
+    try:
+        # Load workbook and explicitly select the "IRS" sheet
+        wb = load_workbook(file_path, data_only=True)
+
+        # Ensure "IRS" sheet exists before attempting to extract data
+        if "IRS" not in wb.sheetnames:
+            print(f"Warning: 'IRS' sheet not found in {file_path}")
+            return None
+
+        sheet = wb["IRS"]
+
+        # Extract full string from row 11, column 1
+        row_11_text = sheet.cell(row=11, column=1).value
+
+        if row_11_text:
+            # Look for "Valuation Date [DD-MMM-YYYY]"
+            match = re.search(r'Valuation Date \[(\d{2})-(\w{3})-(\d{4})\]', row_11_text)
+            if match:
+                day, month_str, year = match.groups()
+
+                # Convert month abbreviation to number
+                month_map = {
+                    "Jan": "01", "Feb": "02", "Mar": "03", "Apr": "04", "May": "05", "Jun": "06",
+                    "Jul": "07", "Aug": "08", "Sep": "09", "Oct": "10", "Nov": "11", "Dec": "12"
+                }
+                month = month_map.get(month_str, "00")
+
+                return f"{day}{month}{year}"  # Return date in DDMMYYYY format
+
+        return None  # Return None if no match is found
+
+    except Exception as e:
+        print(f"Error extracting valuation date from {file_path}: {e}")
+        return None
+
 # Initialize an empty list to store DataFrames
 all_data = []
 
 # Process each uploaded file, focusing only on the "IRS" sheet
 for uploaded_file in uploaded_files:
     try:
-        # Read only the "IRS" sheet
+        # Extract the Valuation Date from row 11
+        valuation_date = extract_valuation_date(uploaded_file)
+
+        # Read the "IRS" sheet
         raw_data = pd.read_excel(uploaded_file, sheet_name="IRS", header=[12, 13])
 
         # Generate column names by merging row 13 and 14
@@ -45,6 +91,9 @@ for uploaded_file in uploaded_files:
         # Add a Report Date column
         report_date = uploaded_file.name.split('-')[-1].split('.')[0] if '-' in uploaded_file.name else "Unknown Date"
         raw_data["Report Date"] = report_date
+
+        # Add the Valuation Date column
+        raw_data["Valuation Date"] = valuation_date
 
         # Append processed data
         all_data.append(raw_data)
@@ -79,19 +128,26 @@ filtered_columns = {
     "Counterparty/ Clearing Member_Final Source Load Time": "Final Source Load Time",
     "Final Source vs Counterparty / Clearing Member_Difference in MV": "Difference in MV",
     "Final Source vs Counterparty / Clearing Member_NAV Tolerance Analysis": "NAV Tolerance Analysis",
-    "Final Source vs Counterparty / Clearing Member_Diff. in MV/IR DV01 or Diff. in MV/IDV01": "Diff. in MV/IR DV01"
+    "Final Source vs Counterparty / Clearing Member_Diff. in MV/IR DV01 or Diff. in MV/IDV01": "Diff. in MV/IR DV01",
+    "Valuation Date": "Valuation Date"  # Add Valuation Date to filtered columns
 }
-filtered_data = data[list(filtered_columns.keys())].rename(columns=filtered_columns)
 
+# Ensure all columns in filtered_columns exist in the DataFrame
+existing_columns = [col for col in filtered_columns.keys() if col in data.columns]
+filtered_data = data[existing_columns].rename(columns=filtered_columns)
+
+# Drop rows with missing Trade ID 1
 filtered_data = filtered_data.dropna(subset=["Trade ID 1"])
 
-# Convert Final Source Load Time to DDMMYYYY format
-filtered_data['Final Source Load Time'] = pd.to_datetime(filtered_data['Final Source Load Time']).dt.strftime('%d%m%Y')
+# Convert Valuation Date to DDMMYYYY format
+filtered_data['Valuation Date'] = pd.to_datetime(
+    filtered_data['Valuation Date'], format='%d%m%Y', errors='coerce'
+).dt.strftime('%d%m%Y')
+
 
 # Set up new columns
 filtered_data['Sensitivity Breach'] = None
 filtered_data['Tolerance Breach'] = None
-filtered_data['Urgent Escalation Required'] = None
 
 # Ask the user for the client name
 client = st.text_input("Please enter the client you are analyzing (e.g., ASGARD): ").strip()
@@ -258,7 +314,7 @@ if client:
     breach_counts = filtered_df.groupby(['Currency', 'Index_Maturity']).size().reset_index(name='Breach Count')
     top_5_per_currency = breach_counts.groupby('Currency').apply(lambda x: x.nlargest(5, 'Breach Count')).reset_index(drop=True)
 
-    filtered_data['Plot Date'] = pd.to_datetime(filtered_data['Final Source Load Time'], format='%d%m%Y')
+    filtered_data['Plot Date'] = pd.to_datetime(filtered_data['Valuation Date'], format='%d%m%Y')
 
     unique_ccys = top_5_per_currency['Currency'].unique()
     fig, axes = plt.subplots(len(unique_ccys), 1, figsize=(15, 5 * len(unique_ccys)), sharex=True)
@@ -296,5 +352,73 @@ if client:
             label="Download Excel",
             data=file,
             file_name=output_file,
+            mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        )
+
+
+
+# Add a new column to flag exceptions
+    filtered_data['Exception Flag'] = filtered_data[['Counterparty MV Base', 'SS&C MV Base']].isnull().any(axis=1)
+
+
+# Create a DataFrame for exceptions
+    exceptions_df = filtered_data[filtered_data['Exception Flag']]
+
+
+
+# Select the relevant columns for the exceptions report
+    exceptions_report_columns = [
+        'Valuation Date', 'Trade ID 1', 'Product Sub Type', 'Trade Date',
+        'Maturity Date', 'Currency', 'Notional', 'Pay Rate', 'Rec Rate', 'SS&C IR DV01',
+        'Counterparty MV Base', 'SS&C MV Base'
+    ]
+
+    exceptions_report = exceptions_df[exceptions_report_columns].sort_values(by=["Valuation Date", "Trade ID 1"])
+
+
+
+# Save the exceptions report to an Excel file
+    exceptions_output_file = "Exceptions_Report.xlsx"
+    exceptions_report.to_excel(exceptions_output_file, index=False, engine='openpyxl', sheet_name="Exceptions Report")
+
+    wb = load_workbook(exceptions_output_file)
+    ws = wb["Exceptions Report"]
+
+    # Get all unique Valuation Dates
+    valuation_dates = exceptions_report["Valuation Date"].unique()
+
+    # Apply bold styling for headers
+    bold_font = Font(bold=True)
+
+    row_offset = 2  # Start after header
+    for val_date in valuation_dates:
+        ws.cell(row=row_offset, column=1, value=str(val_date)).font = bold_font
+        row_offset += len(exceptions_report[exceptions_report["Valuation Date"] == val_date]) + 1  # Leave a blank row
+
+    # Save workbook
+    wb.save(exceptions_output_file)
+
+    # Apply conditional formatting to highlight missing values
+    exception_fill = PatternFill(start_color="FF0000", end_color="FF0000", fill_type="solid")
+
+    for col in ['Counterparty MV Base', 'SS&C MV Base']:
+        col_idx = exceptions_report.columns.get_loc(col) + 1  # Get correct column index
+        for row in range(2, len(exceptions_report) + 2):  # Start from row 2
+            cell = ws.cell(row=row, column=col_idx)
+            if cell.value is None or cell.value == "":  # Check for empty values
+                cell.fill = exception_fill
+
+    wb.save(exceptions_output_file)
+
+
+
+# Provide download link for the exceptions Excel file
+    st.subheader("Download Exceptions Report")
+    st.write("Click the button below to download the exceptions Excel file.")
+    with open(exceptions_output_file, "rb") as file:
+        btn = st.download_button(
+            label="Download Exceptions Excel",
+            data=file,
+            file_name=exceptions_output_file,
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
