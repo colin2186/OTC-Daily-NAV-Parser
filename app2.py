@@ -9,6 +9,7 @@ import streamlit as st
 import re
 from openpyxl.styles import Font
 
+
 # Streamlit app title
 st.title("IRS Report Processor + Tolerance Break Trend Analytics")
 
@@ -129,7 +130,11 @@ filtered_columns = {
     "Final Source vs Counterparty / Clearing Member_Difference in MV": "Difference in MV",
     "Final Source vs Counterparty / Clearing Member_NAV Tolerance Analysis": "NAV Tolerance Analysis",
     "Final Source vs Counterparty / Clearing Member_Diff. in MV/IR DV01 or Diff. in MV/IDV01": "Diff. in MV/IR DV01",
-    "Valuation Date": "Valuation Date"  # Add Valuation Date to filtered columns
+    "Valuation Date": "Valuation Date",  # Add Valuation Date to filtered columns
+    "Third Party_Name": "BBG Curve 4.30pm futures Snap",
+    "Third Party2_Name": "LCH Curve w/ additional futs",
+    "Third Party_MV Base": "BBG REFERENCE Curve MV (4.30 Futs Snap)",
+    "Third Party2_MV Base": "LCH Test Curve MV"
 }
 
 # Ensure all columns in filtered_columns exist in the DataFrame
@@ -344,6 +349,59 @@ if client:
     plt.tight_layout()
     st.pyplot(fig)
 
+    # Filter the data for Sensitivity Breaches and exclude MTM Cross Currency Swap
+    filtered_df = filtered_data[
+        (filtered_data['Sensitivity Breach'] == "TRUE") &
+        (filtered_data['Product Sub Type'] != "MTM Cross Currency Swap")
+        ]
+
+    # Group by Currency and Index_Maturity to get breach counts
+    breach_counts = filtered_df.groupby(['Currency', 'Index_Maturity']).size().reset_index(name='Breach Count')
+
+    # Get the top 5 Index Maturities per Currency
+    top_5_per_currency = breach_counts.groupby('Currency').apply(lambda x: x.nlargest(5, 'Breach Count')).reset_index(
+        drop=True)
+
+    # Debug: Print top_5_per_currency to verify data
+    st.write("Top 5 Index Maturities per Currency:")
+    st.write(top_5_per_currency)
+
+    # Get unique currencies
+    unique_currencies = top_5_per_currency['Currency'].unique()
+
+    # Create a separate bubble chart for each currency
+    for currency in unique_currencies:
+        # Filter data for the current currency
+        currency_data = top_5_per_currency[top_5_per_currency['Currency'] == currency]
+
+        # Create a new figure for the current currency
+        plt.figure(figsize=(10, 6))
+
+        # Plot the bubble chart
+        plt.scatter(
+            currency_data['Index_Maturity'],  # X-axis: Index Maturity
+            [1] * len(currency_data),  # Y-axis: Dummy value (all points on the same line)
+            s=currency_data['Breach Count'] * 100,  # Bubble size: Breach Count (scaled for visibility)
+            alpha=0.6,  # Transparency
+            color='skyblue',  # Bubble color
+            edgecolor='black'  # Bubble edge color
+        )
+
+        # Add labels and title
+        plt.title(f"Sensitivity Breaches for {currency} (Top 5 Index Maturities)", fontsize=16)
+        plt.xlabel("Index Maturity", fontsize=14)
+        plt.ylabel("", fontsize=14)  # No label for Y-axis
+        plt.grid(True, linestyle='--', alpha=0.6)
+
+        # Rotate x-axis labels for better readability
+        plt.xticks(rotation=45)
+
+        # Display the chart in Streamlit
+        st.pyplot(plt)
+
+        # Clear the figure to avoid overlapping plots
+        plt.clf()
+
     # Provide download link for the processed Excel file
     st.subheader("Download Processed Data")
     st.write("Click the button below to download the processed Excel file.")
@@ -355,7 +413,190 @@ if client:
             mime="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
         )
 
+    ### Comparative Analysis
 
+    # Dropdown for Index
+    index_options = filtered_df['Index'].unique()
+    selected_index = st.selectbox("Select Index", index_options)
+
+    # Dropdown for Product Sub Type
+    product_sub_type_options = filtered_df['Product Sub Type'].unique()
+    selected_product_sub_type = st.selectbox("Select Product Sub Type", product_sub_type_options)
+
+    # Text input for Trade IDs
+    trade_ids_input = st.text_input("Enter Trade IDs (comma-separated)")
+
+    # Split the input into a list of Trade IDs
+    selected_trade_ids = [tid.strip() for tid in trade_ids_input.split(",")] if trade_ids_input else []
+
+    # Filter the data based on user selections
+    filtered_df2 = filtered_df[
+        (filtered_df['Product Sub Type'] == selected_product_sub_type) &
+        (filtered_df['Index'] == selected_index) &
+        (filtered_df['Trade ID 1'].isin(selected_trade_ids))
+        ]
+
+    # Convert Valuation Date to datetime for proper time series plotting
+    filtered_df2['Valuation Date'] = pd.to_datetime(filtered_df2['Valuation Date'], format='%d%m%Y')
+
+    ## Perform comparative analysis
+
+    # Ensure columns are numeric
+    filtered_df2['BBG REFERENCE Curve MV (4.30 Futs Snap)'] = filtered_df2[
+        'BBG REFERENCE Curve MV (4.30 Futs Snap)'].replace({'TRUE': 1, 'FALSE': 0}).astype(float)
+    filtered_df2['LCH Test Curve MV'] = pd.to_numeric(filtered_df2['LCH Test Curve MV'], errors='coerce')
+    filtered_df2['BBG REFERENCE Curve MV (4.30 Futs Snap)'] = pd.to_numeric(
+        filtered_df2['BBG REFERENCE Curve MV (4.30 Futs Snap)'], errors='coerce')
+
+    # Ensure denominator (SS&C IR DV01) is non-zero to prevent division errors
+    filtered_df2['SS&C IR DV01'] = filtered_df2['SS&C IR DV01'].replace(0, np.nan)
+
+    # Calculate new basis points differences
+    filtered_df2['BBG REFERENCE Curve MV Diff'] = (
+            (filtered_df2['BBG REFERENCE Curve MV (4.30 Futs Snap)'] - filtered_df2['Counterparty MV Base']) /
+            filtered_df2['SS&C IR DV01']
+    )
+
+    filtered_df2['LCH Test Curve MV Diff'] = (
+            (filtered_df2['LCH Test Curve MV'] - filtered_df2['Counterparty MV Base']) /
+            filtered_df2['SS&C IR DV01']
+    )
+
+    # Ensure the new columns are numeric
+    filtered_df2['LCH Test Curve MV Diff'] = pd.to_numeric(filtered_df2['LCH Test Curve MV Diff'],
+                                                           errors='coerce').fillna(0)
+
+    # Group by Valuation Date and calculate averages
+    time_series_data = filtered_df2.groupby('Valuation Date').agg({
+        'Diff. in MV/IR DV01': 'mean',  # Average Sensitivity Breaches
+        'LCH Test Curve MV Diff': 'mean',  # Average LCH Curve
+        'BBG REFERENCE Curve MV Diff': 'mean'  # Average BBG Curve
+    }).reset_index()
+
+    # Create the time series plot
+    fig, ax = plt.subplots(figsize=(14, 8))
+
+    # Plot Sensitivity Breaches
+    ax.plot(
+        time_series_data['Valuation Date'],
+        time_series_data['Diff. in MV/IR DV01'],
+        label='Average BBG MODEL Sensitivity Breaches',
+        marker='o',
+        linestyle='-',
+        color='blue'
+    )
+
+    # Plot LCH Curve vs CPTY Diff. in MV/IR DV01
+    ax.plot(
+        time_series_data['Valuation Date'],
+        time_series_data['LCH Test Curve MV Diff'],
+        label='LCH Test Curve MV Diff',
+        marker='s',
+        linestyle='-',
+        color='green'
+    )
+
+    # Plot BBG Curve 4.30pm futs snap vs CPTY Diff. in MV/IR DV01
+    ax.plot(
+        time_series_data['Valuation Date'],
+        time_series_data['BBG REFERENCE Curve MV Diff'],
+        label='BBG REFERENCE Curve MV Diff',
+        marker='^',
+        linestyle='-',
+        color='red'
+    )
+
+    # Add labels and title
+    ax.set_title("Time Series of Average Metrics", fontsize=16)
+    ax.set_xlabel("Valuation Date", fontsize=14)
+    ax.set_ylabel("Average Value", fontsize=14)
+    ax.grid(True, linestyle='--', alpha=0.6)
+
+    # Add legend and ensure it's fully visible
+    ax.legend(title="Metrics", loc="upper left", bbox_to_anchor=(1.02, 1), borderaxespad=0.)
+
+    # Rotate x-axis labels for better readability
+    plt.xticks(rotation=45)
+
+    # Adjust layout to prevent clipping
+    plt.tight_layout()
+
+    # Display the plot in Streamlit
+    st.pyplot(fig)
+
+    ## Add Clustered Column Chart for Differences > 2
+
+    # Flagging values > 2
+    filtered_df2['Diff > 2 (BBG MODEL)'] = (filtered_df2['Diff. in MV/IR DV01'] > 2).astype(int)
+    filtered_df2['Diff > 2 (LCH Curve)'] = (filtered_df2['LCH Test Curve MV Diff'] > 2).astype(int)
+    filtered_df2['Diff > 2 (BBG Curve)'] = (filtered_df2['BBG REFERENCE Curve MV Diff'] > 2).astype(int)
+
+    # Grouping by valuation date to count occurrences
+    count_diff_df = filtered_df2.groupby('Valuation Date').agg({
+        'Diff > 2 (BBG MODEL)': 'sum',
+        'Diff > 2 (LCH Curve)': 'sum',
+        'Diff > 2 (BBG Curve)': 'sum'
+    }).reset_index()
+
+    # Convert Valuation Date to datetime and then to DDMMYYYY format
+    count_diff_df['Valuation Date'] = pd.to_datetime(count_diff_df['Valuation Date']).dt.strftime('%d%m%Y')
+
+    # Create a clustered column chart
+    fig2, ax2 = plt.subplots(figsize=(14, 8))
+
+    # Define bar width and x positions
+    bar_width = 0.25
+    x = np.arange(len(count_diff_df['Valuation Date']))
+
+    # Define softer shades for the columns
+    soft_blue = '#A6CEE3'  # Soft blue
+    soft_green = '#B2DF8A'  # Soft green
+    soft_red = '#FB9A99'  # Soft red
+
+    # Plot bars separately for each metric
+    ax2.bar(
+        x - bar_width, count_diff_df['Diff > 2 (BBG MODEL)'],
+        width=bar_width,
+        color=soft_blue,
+        edgecolor='black',  # Thick outline
+        linewidth=2,  # Outline thickness
+        label='BBG MODEL >2'
+    )
+    ax2.bar(
+        x, count_diff_df['Diff > 2 (LCH Curve)'],
+        width=bar_width,
+        color=soft_green,
+        edgecolor='black',  # Thick outline
+        linewidth=2,  # Outline thickness
+        label='LCH Curve >2'
+    )
+    ax2.bar(
+        x + bar_width, count_diff_df['Diff > 2 (BBG Curve)'],
+        width=bar_width,
+        color=soft_red,
+        edgecolor='black',  # Thick outline
+        linewidth=2,  # Outline thickness
+        label='BBG Curve >2'
+    )
+
+    # Formatting the chart
+    ax2.set_xticks(x)
+    ax2.set_xticklabels(count_diff_df['Valuation Date'], rotation=45)
+    ax2.set_title("Count of Differences > 2 Over Time (Clustered Columns)", fontsize=16)
+    ax2.set_xlabel("Valuation Date", fontsize=14)
+    ax2.set_ylabel("Count of Differences > 2", fontsize=14)
+
+    # Add grid background
+    ax2.grid(True, linestyle='--', alpha=0.6)
+
+    # Add legend and ensure it's fully visible
+    ax2.legend(title="Metrics", loc="upper right")
+
+    # Improve layout
+    plt.tight_layout()
+
+    # Display the plot in Streamlit
+    st.pyplot(fig2)
 
 # Add a new column to flag exceptions
     filtered_data['Exception Flag'] = filtered_data[['Counterparty MV Base', 'SS&C MV Base']].isnull().any(axis=1)
