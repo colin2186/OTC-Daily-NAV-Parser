@@ -15,6 +15,14 @@ from selenium.webdriver.common.keys import Keys
 import os
 import subprocess
 
+def install_chrome():
+    subprocess.run(["apt-get", "update"], check=True)
+    subprocess.run(["apt-get", "install", "-y", "google-chrome-stable"], check=True)
+    subprocess.run(["apt-get", "install", "-y", "chromium-chromedriver"], check=True)
+    os.environ["PATH"] += os.pathsep + "/usr/bin/"
+
+install_chrome()
+
 # Install Google Chrome
 subprocess.run(["apt-get", "update"])
 subprocess.run(["apt-get", "install", "-y", "google-chrome-stable"])
