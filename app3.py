@@ -4,24 +4,16 @@ import time
 import glob
 import os
 import shutil
-from selenium import webdriver
-from selenium.webdriver.chrome.service import Service
+import platform  # To check the operating system
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from seleniumwire import webdriver  # Use selenium-wire for additional features
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.support.ui import WebDriverWait as wdw
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
-import os
-import subprocess
-import chromedriver_autoinstaller
-from selenium.webdriver.chrome.service import Service as ChromeService
-from webdriver_manager.chrome import ChromeDriverManager
-from seleniumwire import webdriver  # Use selenium-wire for additional features
-
-
-# Set the driver path
-os.environ["PATH"] += os.pathsep + "/usr/bin/chromedriver"
 
 # Custom CSS for styling
 st.markdown(
@@ -48,8 +40,6 @@ st.markdown(
     """,
     unsafe_allow_html=True,
 )
-
-
 
 # Title and subheader
 st.title("📊 Automated Report Downloader")
@@ -94,7 +84,6 @@ if st.button("Run Report Downloader", key="run_button"):
             # Use webdriver_manager to install ChromeDriver
             driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
             return driver
-
 
         # Function to check if a date is a business day
         def is_business_day(date_to_check):
@@ -163,7 +152,6 @@ if st.button("Run Report Downloader", key="run_button"):
 
             os.remove(newest_xlsx)
             driver.quit()
-
 
         # Progress bar
         progress_bar = st.progress(0)
