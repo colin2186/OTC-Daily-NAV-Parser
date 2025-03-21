@@ -15,7 +15,9 @@ from selenium.webdriver.common.keys import Keys
 import os
 import subprocess
 import chromedriver_autoinstaller
-
+from selenium.webdriver.chrome.service import Service as ChromeService
+from webdriver_manager.chrome import ChromeDriverManager
+from seleniumwire import webdriver  # Use selenium-wire for additional features
 
 
 # Set the driver path
@@ -83,14 +85,14 @@ if st.button("Run Report Downloader", key="run_button"):
 
         # Function to set up the Chrome driver
         def setup_driver():
-            chromedriver_autoinstaller.install()  # Auto-install compatible ChromeDriver
-
+            # Auto-install ChromeDriver
             chrome_options = Options()
-            chrome_options.add_argument("--headless")  # Needed for Streamlit Cloud
+            chrome_options.add_argument("--headless")  # Run in headless mode for cloud environments
             chrome_options.add_argument("--no-sandbox")
             chrome_options.add_argument("--disable-dev-shm-usage")
 
-            driver = webdriver.Chrome(options=chrome_options)
+            # Use webdriver_manager to install ChromeDriver
+            driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=chrome_options)
             return driver
 
 
