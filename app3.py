@@ -14,21 +14,9 @@ from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.keys import Keys
 import os
 import subprocess
+import chromedriver_autoinstaller
 
-def install_chrome():
-    subprocess.run(["apt-get", "update"], check=True)
-    subprocess.run(["apt-get", "install", "-y", "google-chrome-stable"], check=True)
-    subprocess.run(["apt-get", "install", "-y", "chromium-chromedriver"], check=True)
-    os.environ["PATH"] += os.pathsep + "/usr/bin/"
 
-install_chrome()
-
-# Install Google Chrome
-subprocess.run(["apt-get", "update"])
-subprocess.run(["apt-get", "install", "-y", "google-chrome-stable"])
-
-# Install Chromedriver
-subprocess.run(["apt-get", "install", "-y", "chromium-chromedriver"])
 
 # Set the driver path
 os.environ["PATH"] += os.pathsep + "/usr/bin/chromedriver"
@@ -95,14 +83,16 @@ if st.button("Run Report Downloader", key="run_button"):
 
         # Function to set up the Chrome driver
         def setup_driver():
-            chrome_options = Options()
-            chrome_options.add_argument("--headless")  # Run Chrome in headless mode (since Streamlit has no GUI)
-            chrome_options.add_argument("--no-sandbox")  # Bypass OS security model (necessary for Streamlit Cloud)
-            chrome_options.add_argument("--disable-dev-shm-usage")  # Prevent limited resource issues
+            chromedriver_autoinstaller.install()  # Auto-install compatible ChromeDriver
 
-            service = Service("/usr/bin/chromedriver")  # Path for Linux/Streamlit Cloud
-            driver = webdriver.Chrome(service=service, options=chrome_options)
+            chrome_options = Options()
+            chrome_options.add_argument("--headless")  # Needed for Streamlit Cloud
+            chrome_options.add_argument("--no-sandbox")
+            chrome_options.add_argument("--disable-dev-shm-usage")
+
+            driver = webdriver.Chrome(options=chrome_options)
             return driver
+
 
         # Function to check if a date is a business day
         def is_business_day(date_to_check):
