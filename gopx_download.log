@@ -1,0 +1,681 @@
+2025-03-19 19:58:03,298 - INFO - Processing 13 business days between 03-Mar-2025 and 19-Mar-2025
+2025-03-19 19:58:03,315 - INFO - Starting download for 03-Mar-2025
+2025-03-19 19:58:03,315 - INFO - Starting download for 04-Mar-2025
+2025-03-19 19:58:03,316 - INFO - Starting download for 05-Mar-2025
+2025-03-19 19:58:14,960 - ERROR - Exception in gopx_for_date for 04-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:15,536 - ERROR - Exception in gopx_for_date for 03-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:17,103 - WARNING - Failed to process 04-Mar-2025
+2025-03-19 19:58:17,104 - INFO - Starting download for 06-Mar-2025
+2025-03-19 19:58:17,393 - ERROR - Exception in gopx_for_date for 05-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:17,659 - WARNING - Failed to process 03-Mar-2025
+2025-03-19 19:58:17,660 - INFO - Starting download for 07-Mar-2025
+2025-03-19 19:58:19,549 - WARNING - Failed to process 05-Mar-2025
+2025-03-19 19:58:19,550 - INFO - Starting download for 10-Mar-2025
+2025-03-19 19:58:28,512 - ERROR - Exception in gopx_for_date for 06-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:30,144 - ERROR - Exception in gopx_for_date for 10-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:30,653 - WARNING - Failed to process 06-Mar-2025
+2025-03-19 19:58:30,653 - INFO - Starting download for 11-Mar-2025
+2025-03-19 19:58:30,923 - ERROR - Exception in gopx_for_date for 07-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:32,269 - WARNING - Failed to process 10-Mar-2025
+2025-03-19 19:58:32,270 - INFO - Starting download for 12-Mar-2025
+2025-03-19 19:58:33,044 - WARNING - Failed to process 07-Mar-2025
+2025-03-19 19:58:33,044 - INFO - Starting download for 13-Mar-2025
+2025-03-19 19:58:42,515 - ERROR - Exception in gopx_for_date for 11-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:44,624 - WARNING - Failed to process 11-Mar-2025
+2025-03-19 19:58:44,624 - INFO - Starting download for 14-Mar-2025
+2025-03-19 19:58:45,039 - ERROR - Exception in gopx_for_date for 13-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:46,620 - ERROR - Exception in gopx_for_date for 12-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:58:47,207 - WARNING - Failed to process 13-Mar-2025
+2025-03-19 19:58:47,208 - INFO - Starting download for 17-Mar-2025
+2025-03-19 19:58:48,780 - WARNING - Failed to process 12-Mar-2025
+2025-03-19 19:58:48,780 - INFO - Starting download for 18-Mar-2025
+2025-03-19 19:59:18,575 - ERROR - Exception in gopx_for_date for 14-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:59:20,730 - WARNING - Failed to process 14-Mar-2025
+2025-03-19 19:59:20,731 - INFO - Starting download for 19-Mar-2025
+2025-03-19 19:59:22,511 - ERROR - Exception in gopx_for_date for 17-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:59:22,823 - ERROR - Exception in gopx_for_date for 18-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:59:24,661 - WARNING - Failed to process 17-Mar-2025
+2025-03-19 19:59:24,957 - WARNING - Failed to process 18-Mar-2025
+2025-03-19 19:59:31,141 - ERROR - Exception in gopx_for_date for 19-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 19:59:33,270 - WARNING - Failed to process 19-Mar-2025
+2025-03-19 19:59:33,271 - INFO - Completed processing with 0/13 successful downloads
+2025-03-19 20:02:17,815 - INFO - Processing 13 business days between 03-Mar-2025 and 19-Mar-2025
+2025-03-19 20:02:17,817 - INFO - Starting download for 03-Mar-2025
+2025-03-19 20:02:17,818 - INFO - Starting download for 04-Mar-2025
+2025-03-19 20:02:17,818 - INFO - Starting download for 05-Mar-2025
+2025-03-19 20:02:27,984 - ERROR - Exception in gopx_for_date for 04-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:02:28,847 - ERROR - Exception in gopx_for_date for 05-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:02:30,097 - WARNING - Failed to process 04-Mar-2025
+2025-03-19 20:02:30,098 - INFO - Starting download for 06-Mar-2025
+2025-03-19 20:02:30,963 - WARNING - Failed to process 05-Mar-2025
+2025-03-19 20:02:30,964 - INFO - Starting download for 07-Mar-2025
+2025-03-19 20:02:33,228 - ERROR - Exception in gopx_for_date for 03-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:02:35,352 - WARNING - Failed to process 03-Mar-2025
+2025-03-19 20:02:35,353 - INFO - Starting download for 10-Mar-2025
+2025-03-19 20:02:41,956 - ERROR - Exception in gopx_for_date for 06-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:02:42,503 - ERROR - Exception in gopx_for_date for 07-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:02:44,099 - WARNING - Failed to process 06-Mar-2025
+2025-03-19 20:02:44,100 - INFO - Starting download for 11-Mar-2025
+2025-03-19 20:02:44,617 - WARNING - Failed to process 07-Mar-2025
+2025-03-19 20:02:44,618 - INFO - Starting download for 12-Mar-2025
+2025-03-19 20:02:55,749 - ERROR - Exception in gopx_for_date for 12-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:02:56,548 - ERROR - Exception in gopx_for_date for 10-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:02:57,837 - WARNING - Failed to process 12-Mar-2025
+2025-03-19 20:02:57,839 - INFO - Starting download for 13-Mar-2025
+2025-03-19 20:02:58,704 - WARNING - Failed to process 10-Mar-2025
+2025-03-19 20:02:58,705 - INFO - Starting download for 14-Mar-2025
+2025-03-19 20:03:07,214 - ERROR - Exception in gopx_for_date for 13-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:03:09,337 - WARNING - Failed to process 13-Mar-2025
+2025-03-19 20:03:09,338 - INFO - Starting download for 17-Mar-2025
+2025-03-19 20:03:11,047 - ERROR - Exception in gopx_for_date for 14-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:03:13,176 - WARNING - Failed to process 14-Mar-2025
+2025-03-19 20:03:13,176 - INFO - Starting download for 18-Mar-2025
+2025-03-19 20:03:18,219 - ERROR - Exception in gopx_for_date for 11-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:03:19,623 - ERROR - Exception in gopx_for_date for 17-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:03:20,355 - WARNING - Failed to process 11-Mar-2025
+2025-03-19 20:03:20,356 - INFO - Starting download for 19-Mar-2025
+2025-03-19 20:03:21,725 - WARNING - Failed to process 17-Mar-2025
+2025-03-19 20:03:44,492 - ERROR - Exception in gopx_for_date for 18-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:03:46,663 - WARNING - Failed to process 18-Mar-2025
+2025-03-19 20:03:50,682 - ERROR - Exception in gopx_for_date for 19-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:03:52,837 - WARNING - Failed to process 19-Mar-2025
+2025-03-19 20:03:52,838 - INFO - Completed processing with 0/13 successful downloads
+2025-03-19 20:06:11,442 - INFO - Processing 13 business days between 03-Mar-2025 and 19-Mar-2025
+2025-03-19 20:06:11,442 - INFO - Processing 03-Mar-2025 (1/13)
+2025-03-19 20:06:11,442 - INFO - Starting download for 03-Mar-2025
+2025-03-19 20:06:31,313 - ERROR - Exception in gopx_for_date for 03-Mar-2025: Alert Text: Error
+Message: unexpected alert open: {Alert text : Error}
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF3A0E24]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+
+2025-03-19 20:06:33,448 - INFO - Browser closed for 03-Mar-2025
+2025-03-19 20:06:33,448 - WARNING - Failed to process 03-Mar-2025
+2025-03-19 20:06:38,449 - INFO - Processing 04-Mar-2025 (1/13)
+2025-03-19 20:06:38,449 - INFO - Starting download for 04-Mar-2025
+2025-03-19 20:06:58,338 - ERROR - Exception in gopx_for_date for 04-Mar-2025: Message: no such window: target window already closed
+from unknown error: web view not found
+  (Session info: chrome=134.0.6998.89)
+Stacktrace:
+	GetHandleVerifier [0x00007FF6CF4FFE45+26629]
+	(No symbol) [0x00007FF6CF466010]
+	(No symbol) [0x00007FF6CF2F931A]
+	(No symbol) [0x00007FF6CF2D1753]
+	(No symbol) [0x00007FF6CF37F6BE]
+	(No symbol) [0x00007FF6CF39FA55]
+	(No symbol) [0x00007FF6CF377883]
+	(No symbol) [0x00007FF6CF340550]
+	(No symbol) [0x00007FF6CF341803]
+	GetHandleVerifier [0x00007FF6CF8572BD+3529853]
+	GetHandleVerifier [0x00007FF6CF86DA22+3621858]
+	GetHandleVerifier [0x00007FF6CF8624D3+3575443]
+	GetHandleVerifier [0x00007FF6CF5CB77A+860474]
+	(No symbol) [0x00007FF6CF47088F]
+	(No symbol) [0x00007FF6CF46CBC4]
+	(No symbol) [0x00007FF6CF46CD66]
+	(No symbol) [0x00007FF6CF45C2C9]
+	BaseThreadInitThunk [0x00007FFF66AD259D+29]
+	RtlUserThreadStart [0x00007FFF68B6AF38+40]
+

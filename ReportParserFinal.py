@@ -8,7 +8,7 @@ import numpy as np
 
 
 # Step 1: Dynamically find all matching files
-file_path = r'C:\Users\cdunne\Documents\ASGARD'
+file_path = r'C:\Users\cdunne\Documents\ASGARD_Mar'
 file_pattern = 'ASGARD_OTCDerivativesReport-*.csv'  # Modified to match any date
 matching_files = glob.glob(os.path.join(file_path, file_pattern))
 
@@ -60,42 +60,41 @@ data = data.dropna(subset=['Trade ID 1'])
 
 # Step 4: Ask user for the NAV
 try:
-    nav = float(input("Please add ME NAV (e.g., 439607201): "))
+    nav = float(input("Please add ME NAV (e.g., 456602278.79): "))
 except ValueError:
     print("Invalid NAV entered. Please enter a numeric value.")
     exit()
 
 # Step 5: Map Excel-like column references (A, B, F, etc.) to actual column names
 excel_columns = {
-    'A': data.columns[0],  # Replace with the actual column index for A
-    'B': data.columns[1],  # Column B
-    'F': data.columns[5],  # Column F
-    'V': data.columns[21], # Column V
-    'W': data.columns[22], # Column W
-    'X': data.columns[23], # Column X
+    'A': data.columns[0],  # Replace with the actual column index for A TRADE1
+    'B': data.columns[1],  # Column B TRADE2
+    'G': data.columns[5],  # Column F Instrument Sub Type
+    'S': data.columns[21], # Column V Diff. in MV/IR DV01 or Diff. in MV/IDV01
+    'T': data.columns[22], # Column W Difference in MV
+    'U': data.columns[23], # Column X NAV Tolerance Analysis
     'AZ': data.columns[51], # Column AZ
     'BA': data.columns[52], # Column BA
     'BB': data.columns[53], # Column BB
     'BC': data.columns[54], # Column BC
     'BD': data.columns[55], # Column BD
     'BE': data.columns[56], # Column BE
-    'BF': data.columns[57], # Column BF
-    'BG': data.columns[58], # Column BG
-    'AG': data.columns[32], # Column AG
-    'BO': data.columns[66] # Column BO
+    'BF': data.columns[57], # Column BF REC RATE
+    'BG': data.columns[58], # Column BG PAY RATE
+    'AH': data.columns[32], # Column AG IRDVOL
+    'BP': data.columns[66] # Column BO
 }
 
 # Step 6: Convert numeric columns to proper numeric format
-numeric_columns = [excel_columns['W'], excel_columns['AG'], excel_columns['X'], excel_columns['V']]
+numeric_columns = [excel_columns['T'], excel_columns['AH'], excel_columns['U'], excel_columns['S']]
 for col in numeric_columns:
     data[col] = pd.to_numeric(data[col].replace(',', '', regex=True), errors='coerce')
 
 # Step 7: Filter the DataFrame using the mapped columns
-selected_columns = ['A', 'B', 'F', 'V','W','X', 'AZ', 'BA', 'BB', 'BC', 'BD', 'BE', 'BF', 'BG', 'AG', 'BO']
+selected_columns = ['A', 'B', 'G', 'S','T','U', 'AZ', 'BA', 'BB', 'BC', 'BD', 'BE', 'BF', 'BG', 'AH', 'BP']
 df = data[[excel_columns[col] for col in selected_columns]].copy()
 
-# Convert Final Source Load Time to DDMMYYYY format
-df['Final Source Load Time'] = pd.to_datetime(df['Final Source Load Time']).dt.strftime('%d%m%Y')
+
 
 
 def get_index(row):
@@ -129,12 +128,12 @@ if numeric_indices.any():
     print(df[numeric_indices][['Rec Rate', 'Pay Rate', 'Index']])
 
 # Step 8: Add new columns for tolerance checks
-df['NAV Break (BPs)'] = (df[excel_columns['W']] / nav) * 10000
-df['Sensitivity Break (BPs)'] = df[excel_columns['W']] / df[excel_columns['AG']]
+df['NAV Break (BPs)'] = (df[excel_columns['T']] / nav) * 10000
+df['Sensitivity Break (BPs)'] = df[excel_columns['T']] / df[excel_columns['AH']]
 
 # Step 9: Add Sensitivity Diff Check and NAV Break Check columns
-df['Sensitivity Diff Check (BPs)'] = df[excel_columns['V']] - df['Sensitivity Break (BPs)']
-df['NAV Break Check (BPs)'] = df[excel_columns['X']] - df['NAV Break (BPs)']
+df['Sensitivity Diff Check (BPs)'] = df[excel_columns['S']] - df['Sensitivity Break (BPs)']
+df['NAV Break Check (BPs)'] = df[excel_columns['U']] - df['NAV Break (BPs)']
 
 # Step 10: Round specific columns to 2 decimal places
 columns_to_round = ['NAV Break (BPs)', 'Sensitivity Break (BPs)',
@@ -321,8 +320,7 @@ breach_counts = filtered_df.groupby(['Ccy', 'Index_Maturity']).size().reset_inde
 # Get the top 5 Index Maturities **per currency**
 top_5_per_currency = breach_counts.groupby('Ccy').apply(lambda x: x.nlargest(5, 'Breach Count')).reset_index(drop=True)
 
-# Convert Final Source Load Time to datetime for plotting
-df['Plot Date'] = pd.to_datetime(df['Final Source Load Time'], format='%d%m%Y')
+
 
 # Create a figure with subplots for each unique currency
 unique_ccys = top_5_per_currency['Ccy'].unique()
