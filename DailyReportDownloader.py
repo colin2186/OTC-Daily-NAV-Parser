@@ -64,6 +64,16 @@ def gopx(target_date_str):
     # Apply filter
     filter_button = driver.find_element(By.XPATH, '//*[@id="runSummaryFlag"]/table/tbody/tr/td/table/tbody/tr[1]/td/input')
     filter_button.click()
+    time.sleep(2)
+
+    #Select Report
+
+    select_report =  driver.find_element(By.XPATH,'//*[@id="excelDownloadTag"]/table/tbody/tr/td/table/tbody/tr[2]/td[1]/select')
+    select_report.click()
+    select_report.send_keys(Keys.DOWN)
+    select_report.click()
+
+
 
     # Download the report
     driver.find_element(By.XPATH, "//input[@name='handleExcelDownLoad']").click()
@@ -95,8 +105,8 @@ def gopx(target_date_str):
 
 def main():
     # Define date range
-    start_date = datetime(2025, 3, 3)  # Start date
-    end_date = datetime(2025, 3, 6)  # End date
+    start_date = datetime(2025, 3, 7)  # Start date
+    end_date = datetime(2025, 3, 21)  # End date
 
     # Loop through each date in the range
     current_date = start_date
