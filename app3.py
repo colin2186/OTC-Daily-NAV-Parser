@@ -21,9 +21,16 @@ RETRY_DELAY = 10  # seconds
 
 
 # ---------------------------- Core Functions (UNCHANGED) ----------------------------
+
 def read_credentials():
-    with open('unicorn.txt') as user_file, open('pineapple.txt') as pw_file:
-        return user_file.read().strip(), pw_file.read().strip()
+    cred_folder = r'C:\Credentials'
+    os.makedirs(cred_folder, exist_ok=True)  # Creates folder if missing
+
+    user_file = os.path.join(cred_folder, 'unicorn.txt')
+    pw_file = os.path.join(cred_folder, 'pineapple.txt')
+
+    with open(user_file) as uf, open(pw_file) as pf:
+        return uf.read().strip(), pf.read().strip()
 
 
 def setup_driver():
